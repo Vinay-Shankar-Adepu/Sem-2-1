@@ -1,0 +1,3 @@
+class truck extends Vehicle {
+    
+}

@@ -1,0 +1,216 @@
+/* General body styling */
+body {
+   font-family: Arial, sans-serif;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   margin: 0;
+   background-color: rgb(33, 33, 33);
+}
+
+/* Login container styling */
+.login-container {
+   background-color: rgb(33, 33, 33);
+   padding: 30px 20px;
+   border-radius: 10px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 100%;
+   max-width: 350px;
+}
+
+/* Title styling */
+.login-container h2 {
+   text-align: center;
+   font-size: 1.5em;
+   color: #58bc82;
+   margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+.form {
+   --bg-light: #efefef;
+   --bg-dark: #707070;
+   --clr: #58bc82;
+   --clr-alpha: #e6f0ff;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+   width: 100%;
+}
+
+/* Input field styling */
+.form .input-span {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 0.3rem;
+}
+
+.form input[type="text"],
+.form input[type="password"] {
+   border-radius: 0.5rem;
+   padding: 0.9rem 0.75rem;
+   width: 93%;
+   border: 1px solid #9c9c9c;
+   background-color: var(--clr-alpha);
+   font-size: 1rem;
+   color: #333;
+   outline: none;
+   transition: border-color 0.3s ease;
+}
+
+.form input[type="text"]:focus,
+.form input[type="password"]:focus {
+   border-color: #58bc82;
+   outline: 2px solid #58bc82;
+}
+
+/* Label styling */
+.label {
+   align-self: flex-start;
+   color: #58bc82;
+   font-weight: bold;
+}
+
+/* Submit button styling */
+.form .submit {
+   padding: 0.9rem 0.75rem;
+   width: 100%;
+   border-radius: 2rem;
+   background-color: #707070;
+   color: #efefef;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   font-weight: bold;
+   font-size: 1rem;
+}
+
+.form .submit:hover {
+   background-color: #58bc82;
+   color: #707070;
+}
+
+/* Link styling */
+.span {
+   text-decoration: none;
+   color: var(--bg-dark);
+   font-size: 0.9rem;
+}
+
+.span a {
+   color: #58bc82;
+   text-decoration: none;
+}
+
+/* Error message styling */
+.login-container p {
+   color: red;
+   text-align: center;
+   font-size: 0.9em;
+}
+
+/* From Uiverse.io by KSAplay */ 
+.loader {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   gap: 5px;
+ }
+ 
+ .loading-text {
+   color: rgb(0, 0, 0);
+   font-size: 14pt;
+   font-weight: 600;
+   margin-left: 10px;
+ }
+ 
+ .dot {
+   margin-left: 3px;
+   animation: blink 1.5s infinite;
+ }
+ .dot:nth-child(2) {
+   animation-delay: 0.3s;
+ }
+ 
+ .dot:nth-child(3) {
+   animation-delay: 0.6s;
+ }
+ 
+ .loading-bar-background {
+   --height: 30px;
+   display: flex;
+   align-items: center;
+   box-sizing: border-box;
+   padding: 5px;
+   width: 200px;
+   height: var(--height);
+   background-color: #212121 /*change this*/;
+   box-shadow: #0c0c0c -2px 2px 4px 0px inset;
+   border-radius: calc(var(--height) / 2);
+ }
+ 
+ .loading-bar {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   --height: 20px;
+   width: 0%;
+   height: var(--height);
+   overflow: hidden;
+   background: rgb(222, 74, 15);
+   background: linear-gradient(
+     0deg,
+     rgba(222, 74, 15, 1) 0%,
+     rgba(249, 199, 79, 1) 100%
+   );
+   border-radius: calc(var(--height) / 2);
+   animation: loading 4s ease-out infinite;
+ }
+ 
+ .white-bars-container {
+   position: absolute;
+   display: flex;
+   align-items: center;
+   gap: 18px;
+ }
+ 
+ .white-bar {
+   background: rgb(255, 255, 255);
+   background: linear-gradient(
+     -45deg,
+     rgba(255, 255, 255, 1) 0%,
+     rgba(255, 255, 255, 0) 70%
+   );
+   width: 10px;
+   height: 45px;
+   opacity: 0.3;
+   rotate: 45deg;
+ }
+ 
+ @keyframes loading {
+   0% {
+     width: 0;
+   }
+   80% {
+     width: 100%;
+   }
+   100% {
+     width: 100%;
+   }
+ }
+ 
+ @keyframes blink {
+   0%,
+   100% {
+     opacity: 0;
+   }
+   50% {
+     opacity: 1;
+   }
+ }
+/* From Uiverse.io by elijahgummer */ 

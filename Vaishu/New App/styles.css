@@ -1,0 +1,18 @@
+.card{
+   display: flex;
+   background-color: aquamarine;
+   max-width: 100%;
+   width: 50%;
+   height: 500px;
+   border-radius: 30px;
+   padding: 20px;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 15px 15px 12px gray;
+}
+
+.butt{
+   /* position: absolute; */
+   bottom: 0%;
+   
+}

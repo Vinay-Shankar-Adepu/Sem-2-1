@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Product List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="productTable"></tbody>
+    </table>
+
+    <script>
+        // Fetch the products.json file and populate the table
+        fetch('./products.json')
+            .then(response => {
+                console.log('Fetching JSON...');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Data fetched:', data);
+                const tableBody = document.getElementById('productTable');
+                data.forEach(product => {
+                    const row = document.createElement('tr');
+
+                    // Create table cells for each product attribute
+                    row.innerHTML = `
+                        <td>${product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                    `;
+
+                    // Append the row to the table body
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching the JSON file:', error));
+    </script>
+</body>
+</html>

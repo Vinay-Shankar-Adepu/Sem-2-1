@@ -1,0 +1,56 @@
+Week-4: Practicing DDL commands
+Objective: To enhance understanding of DDL commands by creating tables, adding constraints, and manipulating table structures.
+
+
+
+
+Task 3: Creating Tables with Default Values and Constraints
+Q6) Create the following tables with a foreign key constraint:
+·         Departments (Columns: DepartmentID INT PRIMARY KEY, DepartmentName VARCHAR(100))
+
+·         Employees (Columns: EmployeeID INT PRIMARY KEY, Name VARCHAR(100), DepartmentID INT referencing Departments)
+
+
+Q7) Write an SQL statement to create a table named Orders with the following structure:
+
+·         OrderID: Integer, Primary Key
+
+·         OrderDate: Date, Default to Current Date
+
+·         OrderStatus: Varchar(20), Default value is 'Pending'
+
+·         TotalAmount: Decimal, should be greater than 0
+
+ 
+
+ 
+
+Q8) Create a table named Customers with the following structure:
+·         CustomerID: Integer, Primary Key
+
+·         Email: Varchar(100), Unique
+
+·         FirstName: Varchar(50), Not Null
+
+·         LastName: Varchar(50), Not Null
+
+Task 4: Creating Temporary Tables and AUTO_INCREMENT Columns
+Q9) Write an SQL statement to create a temporary table named TempStudents with the same structure as the Student table.
+
+Q10) Create a table named Departments with the following columns:
+·         DepartmentID: Integer, Primary Key, Auto Increment
+
+·         DepartmentName: Varchar(100), Unique
+
+ 
+
+ 
+
+Q11) Create a table named Grades with the following structure:
+·         GradeID: Integer, Primary Key
+
+·         StudentID: Integer, Foreign Key referencing Students(StudentID) with ON DELETE CASCADE
+
+·         CourseID: Integer, Foreign Key referencing Courses(CourseID) with ON DELETE CASCADE
+
+Grade: Char(2)

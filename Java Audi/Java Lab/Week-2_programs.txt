@@ -1,0 +1,184 @@
+/*
+Given a number, check if the number (N) can be written as the form (k+1)*k. 
+Write a java program to print those numbers in the given range.
+
+Sample input:
+10
+Sample output:
+2
+6
+*/
+CODE:
+import java.util.Scanner;
+class Test{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        for (int i=1; i<n; i++){
+            if (((i*i)+i)<=n){
+                System.out.println((i*i)+i);
+            }
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------
+/* Write a java program to check whether the given number is gapful or not.
+A number is gapful if it is at least 3 digits long and is divisible 
+by the number formed by stringing the first and last numbers together. 
+The smallest number that fits this description is 100. 
+First digit is 1, last digit is 0, forming 10, which is a factor of 100. 
+Therefore, 100 is gapful. Print "Yes" if it is gapful otherwise "No".
+
+
+Examples
+case=1
+input=100
+output=Yes
+
+case=2
+input=103
+output=No
+
+case=3
+input=105
+output=Yes
+
+*/
+CODE:
+import java.util.Scanner;
+class Test{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("input=");
+        int n=sc.nextInt();
+        String k=Integer.toString(n);
+        int x=k.charAt(0)-'0';
+        int y=k.charAt(k.length()-1)-'0';
+        int f=x*10+y;
+        if (n%f==0){
+            System.out.println("Yes");
+        }
+        else{
+            System.out.println("No");
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------------------
+/*Cricketer's Pension Continuing our journey in mastering the conditional statements & our interest with cricket.
+Let us help the Indian cricket's governing body (BCCI) to 
+automate its plan of allotting pensions to former players. 
+The rules are given below:  
+If a player has played more than 10 test matches and 100 ODI's he receives Rs.50,000.
+If a player has played more than 10 test matches he receives Rs.25,000.
+If a player has played more than 100 ODI's he receives Rs.15,000.
+If a player has played for India he receives Rs.10,000.
+The amount is incremented by 1/4th for every 'man of the match' 
+award.
+If a player has not played for India but played IPL he receives an amount of Rs.8,000. 
+If a player has not played for India nor IPL he receives an amount of Rs.7,000.
+
+Sample IO 1:
+------------
+Has he played for India?                                                                                                
+y                                                                                                                       
+Has he played IPL?                                                                                                      
+y                                                                                                                       
+Enter no of Testmatches                                                                                                 
+5                                                                                                                       
+Enter no of ODIs                                                                                                        
+6                                                                                                                       
+Enter the number of man of the matches                                                                                  
+10                                                                                                                      
+35000.0                                                                                                                 
+
+*/
+CODE:
+import java.util.Scanner;
+class Test{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Has he played for India?");
+        String ind=sc.next();
+        System.out.println("Has he played IPL?");
+        String ipl=sc.next();
+        System.out.println("Enter no of Testmatches  ");
+        int tm=sc.nextInt();
+        System.out.println("Enter no of ODIs ");
+        int odi=sc.nextInt();
+        System.out.println("Enter the number of man of the matches");
+        int mm=sc.nextInt();
+        float r=0.0f;
+        if (ind.equals("y") && ipl.equals("y") && tm>10 && odi>100){
+            r=50000.0f+(0.25f*50000f*mm);
+        }
+        else if(ind.equals("y") && ipl.equals("y") && tm>10){
+            r=25000.0f+(0.25f*25000f*mm);
+        }
+        else if(ind.equals("y") && ipl.equals("y") && odi>100){
+            r=15000.0f+(0.25f*15000f*mm);
+        }
+        else if(ind.equals("y")){
+            r=10000.0f+(0.25f*10000f*mm);
+        }
+        else if(ind.equals("n") && ipl.equals("y")){
+            r=8000.0f+(0.25f*8000f*mm);
+        }
+        else if(ind.equals("n") && ipl.equals("n")){
+            r=7000.0f+(0.25f*7000f*mm);
+        }
+        System.out.println(r);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------
+/*
+Create a College class with the following attributes:
+
+name (String)
+location (String)
+establishedYear (int)
+Implement the following methods:
+
+displayDetails():
+This method should print the attributes of the college.
+updateLocation(String newLocation): 
+This method should update the college's location.
+updateEstablishedYear(int newYear): 
+This method should update the college's established year.
+
+*/
+CODE:
+---------------------------------------------------------------------------------------------------------------------------
+/*
+Create a Person class with attributes or variables name, age, and gender.
+Implement a method displayDetails() to print the details of a person. 
+SAMPLE OUTPUT:
+Person 1 Details:                                                               
+name:Amulya                                                                     
+age:30                                                                          
+gender:Female                                                                   
+                                                                                
+Person 2 Details:                                                               
+name:John                                                                       
+age:30                                                                          
+gender:Mal
+
+*/
+----------------------------------------------------------------------------------------------------------------------------
+/*
+Create a Book class with variables title, author, and price. 
+Add a method displayDetails() to output the book's details. 
+
+*/
+----------------------------------------------------------------------------------------------------
+ /* write variables and methds related to Bulb
+    String shape;
+    String type;
+    short watt;
+    boolean SupportIOT;
+    String brand;
+    float price;
+    byte lifeSpan;
+    void turnOn()
+     
+    void turnOff()
+    */

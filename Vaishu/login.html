@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Login</title>
+    <link rel="stylesheet" href="styles_login.css"> <!-- Link to external CSS -->
+</head>
+<body>
+
+<!-- Login Form -->
+<div class="login-container">
+    <h2>College Login</h2>
+    <form class="form" id="loginForm">
+      <span class="input-span">
+        <label for="collegeId" class="label">College ID</label>
+        <input type="text" id="collegeId" name="collegeId" placeholder="College ID" required />
+      </span>
+      <span class="input-span">
+        <label for="password" class="label">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+      </span>
+      
+      <input class="submit" type="submit" value="Login" />
+      
+    </form>
+    <p id="message"></p>
+  </div>
+  
+
+
+
+<!-- Loader (Hidden Initially) -->
+<div class="loader" id="loader" style="display: none;">
+    <div class="loading-text">
+        Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    </div>
+    <div class="loading-bar-background">
+        <div class="loading-bar">
+            <div class="white-bars-container">
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Sample data for validation
+    const users = [
+        { collegeId: "23BD1A0501", password: "kmit123" },
+        { collegeId: "23BD1A0502", password: "kmit123" },
+        { collegeId: "23BD1A0503", password: "kmit123" }
+    ];
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const collegeId = document.getElementById("collegeId").value;
+        const password = document.getElementById("password").value;
+        
+        const user = users.find(user => user.collegeId === collegeId && user.password === password);
+        
+        if (user) {
+            localStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("lastActivity", Date.now());  // Track last activity time
+
+            // Show loader and hide login form
+            document.getElementById("loader").style.display = "block";
+            document.querySelector(".login-container").style.display = "none";
+
+            // Set a delay before redirecting
+            setTimeout(() => {
+                window.location.href = "homepage.html";
+            }, 2500); // 3 seconds delay
+        } else {
+            document.getElementById("message").textContent = "Invalid College ID or Password";
+        }
+    });
+</script>
+
+</body>
+</html>

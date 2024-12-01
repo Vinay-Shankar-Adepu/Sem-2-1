@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Course - College Canteen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">College Canteen</div>
+        <nav>
+            <a href="homepage.html  ">Home</a>
+            <a href="snacks.html">Snacks</a>
+            <a href="maincourse.html">Main Course</a>
+            <a href="beverages.html">Beverages</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="combos.html">Combos</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+        <div class="auth">
+            <button onclick="window.location.href='login.html'">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Course Section -->
+    <section class="popular-items">
+        <h2>Main Course</h2>
+        <div class="item-grid">
+            <!-- Main Course items go here -->
+            <div class="card" data-id="3" data-name="Pasta" data-price="120" data-image="images/pasta.jpeg">
+                <div class="image_container">
+                    <img src="images/pasta.jpeg" alt="Pasta" class="image">
+                </div>
+                <div class="title">
+                    <span>Pasta</span>
+                </div>
+                <div class="action">
+                    <div class="price">
+                        <span>Rs.120</span>
+                    </div>
+                    <button class="cart-button" onclick="addToCart(this)">
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Example Item -->
+            <div class="card" data-id="4" data-name="Fried Rice" data-price="100" data-image="images/friedrice.jpeg">
+                <div class="image_container">
+                    <img src="images/friedrice.jpeg" alt="Fried Rice" class="image">
+                </div>
+                <div class="title">
+                    <span>Fried Rice</span>
+                </div>
+                <div class="action">
+                    <div class="price">
+                        <span>Rs.100</span>
+                    </div>
+                    <button class="cart-button" onclick="addToCart(this)">
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 College Canteen</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality: Add item to cart
+        function addToCart(button) {
+            const card = button.closest('.card');
+            const id = card.getAttribute('data-id');
+            const name = card.getAttribute('data-name');
+            const price = parseInt(card.getAttribute('data-price'));
+            const image = card.getAttribute('data-image');
+            const item = { id: id, name: name, price: price, image: image, quantity: 1 };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " added to cart");
+        }
+    </script>
+
+</body>
+</html>

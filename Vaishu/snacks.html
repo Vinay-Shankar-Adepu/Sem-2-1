@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks - College Canteen</title>
+    <link rel="stylesheet" href="styles_snacks.css"> <!-- Link to external CSS -->
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">College Canteen</div>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="snacks.html">Snacks</a>
+            <a href="maincourse.html">Main Course</a>
+            <a href="beverages.html">Beverages</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="combos.html">Combos</a>
+            <a href="cart.html">Cart</a>
+        </nav>
+        <div class="auth">
+            <button onclick="window.location.href='login.html'">Logout</button>
+        </div>
+    </header>
+
+    <!-- Snacks Section -->
+    <section class="popular-items">
+        <h2>Snacks</h2>
+        <div class="item-grid">
+            <!-- Add relevant items for Snacks -->
+            <div class="card" data-id="1" data-name="Samosa" data-price="20" data-image="images/samosa.png">
+                <div class="image_container">
+                    <img src="images/samosa.png" alt="Samosa" class="image">
+                </div>
+                <div class="title">
+                    <span>Samosa</span>
+                </div>
+                <div class="action">
+                    <div class="price">
+                        <span>Rs.15</span>
+                    </div>
+                    <button class="cart-button" onclick="addToCart(this)">
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Example Item: Add more as needed -->
+            <div class="card" data-id="2" data-name="Chips" data-price="15" data-image="images/VegPuffs.webp">
+                <div class="image_container">
+                    <img src="images/VegPuffs.webp" alt="VegPuffs" class="image">
+                </div>
+                <div class="title">
+                    <span>Veg Puff</span>
+                </div>
+                <div class="action">
+                    <div class="price">
+                        <span>Rs.20</span>
+                    </div>
+                    <button class="cart-button" onclick="addToCart(this)">
+                        <span>Add to cart</span>
+                    </button>
+                </div>
+            </div>
+            
+           <div class="card" data-id="2" data-name="Chips" data-price="15" data-image="images/egg-puffs.webp">
+            <div class="image_container">
+                <img src="images/egg-puffs.webp" alt="egg-puffs" class="image">
+            </div>
+            <div class="title">
+                <span>Egg Puff</span>
+            </div>
+            <div class="action">
+                <div class="price">
+                    <span>Rs.20</span>
+                </div>
+                <button class="cart-button" onclick="addToCart(this)">
+                    <span>Add to cart</span>
+                </button>
+            </div>
+        </div> 
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 College Canteen</p>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality: Add item to cart
+        function addToCart(button) {
+            const card = button.closest('.card');
+            const id = card.getAttribute('data-id');
+            const name = card.getAttribute('data-name');
+            const price = parseInt(card.getAttribute('data-price'));
+            const image = card.getAttribute('data-image');
+            const item = { id: id, name: name, price: price, image: image, quantity: 1 };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " added to cart");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            background-color: #eff2e8;
+        }
+        fieldset {
+            width: 400px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f5f3f7;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 48%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm">
+        <fieldset>
+            <legend>Registration Form</legend>
+            <input type="text" id="username" placeholder="Username" title="Only alphabets, 5-10 characters, at least 1 uppercase and 1 lowercase letter">
+            <input type="password" id="password" placeholder="Password">
+            <input type="password" 
+            id="confirmPassword" placeholder="Confirm Password">
+            <div>
+                <button type="reset">Reset</button>
+                <button type="button" onclick="submitForm()">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+
+    <script src="events.js"></script>
+</body>
+</html>

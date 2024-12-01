@@ -1,0 +1,23 @@
+How is the object is created?
+An object in Java is created by when the new keyword is encountered.
+eg:- book k= new book();
+
+--------------------------------------------------------------------------
+AN object is an instance of a class.
+	Book b=new Book();
+class Book
+{
+int bid;
+short price;
+} Whenever JVM(JAVA Virtual Machine) comes across a new keyword it creates an object. The new keyword is followed by a name of a class and constructor invocation.
+The object the JVM looks at the name of the class would create a copy of all the instance variables and create an object on the heap. It would assign these copied variables to the newly created object and then invoke the constructor  
+-------------------------------------------------------------------------------
+Static and instance variable 
+A static variable is a variable that is declared in class with static keyword which makes it open for access and editing for objects that have been declared as it wont be recreated when an object is declared or a constructor is used. It is a single copy that belongs to the class. Objects can access it through reference and can edit it but its value will be same for every other object. Static variables are created when a class is loaded into JAVM. A static variable can be called by an object by calling it like a method for example "object_name.Static_variable_name". or we can call it by "class_name.Static_variable_name". 
+
+An instance variable is a variable which gets created each time an object gets created hence its value will be different for different objects unlike a static variable.
+------------------------------------------------------------------------------------
+Why is Main method is Static?
+Static methods can be invoked without creating the object of the class in which it is defined.
+hence the JVM does not need to create an object of the executable class just to invoke the main method
+--------------------------------------------------------------------------------------

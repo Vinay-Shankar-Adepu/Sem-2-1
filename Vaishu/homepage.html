@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Canteen</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+      <div class="logo">College Canteen</div>
+      <nav>
+          <a href="#">Home</a>
+          <a href="#">Menu</a>
+          <a href="#">Specials</a>
+          <a href="#">Order Now</a>
+          <a href="#">Order History</a>
+          <a href="#">About Us</a>
+          <a href="#">Contact</a>
+      </nav>
+      <div class="cart">
+          <a href="cart.html" class="cart-link">
+              <span class="cart-icon">🛒</span> 
+              <span class="cart-count" id="cart-count">0</span>
+          </a>
+      </div>
+      <div class="auth">
+          <button onclick="window.location.href='login.html'">Logout</button>
+      </div>
+  </header>
+  
+  <!-- Search Section -->
+  <div class="group">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+      <g>
+        <path
+          d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+        ></path>
+      </g>
+    </svg>
+    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+
+    <input
+      id="query"
+      class="input"
+      type="search"
+      placeholder="Search..."
+      name="searchbar"
+    />
+  </div>
+
+  <!-- Popular Items Section -->
+  <section class="popular-items">
+
+      <h2>Popular Items</h2>
+      <div id="item-grid" class="item-grid">
+
+         <!-- Card 1 -->
+         <!-- <div class="card" data-id="1" data-name="Noodles" data-price="50" data-image="images/noodels.jpeg">
+            <div class="image_container">
+               <img src="images/noodels.jpeg" alt="Product Image" class="image" />
+            </div>
+            <div class="title">
+               <span>Noodles</span>
+            </div>
+            <div class="size">
+               <span>Quantity</span>
+               <select class="quantity-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+               </select>
+            </div>
+            <div class="action">
+               <div class="price">
+                  <span>Rs.50</span>
+               </div>
+               <button class="cart-button" onclick="addToCart(this)">
+                  <span>Add to cart</span>
+               </button>
+            </div>
+         </div> -->
+
+         <!-- Card 2 -->
+         <!-- <div class="card" data-id="2" data-name="Manchurian Noodles" data-price="50" data-image="images/MN.jpeg">
+            <div class="image_container">
+               <img src="images/MN.jpeg" alt="Product Image" class="image" />
+            </div>
+            <div class="title">
+               <span>Manchurian Noodles</span>
+            </div>
+            <div class="size">
+               <span>Quantity</span>
+               <select class="quantity-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+               </select>
+            </div>
+            <div class="action">
+               <div class="price">
+                  <span>Rs.50</span>
+               </div>
+               <button class="cart-button" onclick="addToCart(this)">
+                  <span>Add to cart</span>
+               </button>
+            </div>
+         </div> -->
+      </div>
+   </section>
+
+   <!-- Categories Section -->
+   <section class="categories">
+      <h2>Categories</h2>
+      <div class="category-grid">
+         <a href="snacks.html"><div class="category-card">Snacks</div></a>
+         <div class="category-card">Main Course</div>
+         <div class="category-card">Beverages</div>
+         <div class="category-card">Desserts</div>
+         <div class="category-card">Combos</div>
+      </div>
+   </section>
+
+   <!-- Footer Section -->
+   <footer>
+      <p>&copy; 2024 College Canteen</p>
+      <div class="social-links">
+         <a href="#">Facebook</a>
+         <a href="#">Instagram</a>
+         <a href="#">Twitter</a>
+      </div>
+   </footer>
+
+   <script>
+      // Check if the user is logged in, if not, redirect to login
+      window.onload = function() {
+         const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+         if (!isLoggedIn) {
+            window.location.href = "login.html";
+         } else {
+            startSessionTimer();
+         }
+
+         updateCartCount();
+      };
+
+      // Cart functionality: Add item to cart
+      function addToCart(button) {
+         const card = button.closest('.card');
+         const id = card.getAttribute('data-id');
+         const name = card.getAttribute('data-name');
+         const price = parseInt(card.getAttribute('data-price'));
+         const image = card.getAttribute('data-image');
+         const quantity = parseInt(card.querySelector('.quantity-select').value);
+
+         const item = {
+            id: id,
+            name: name,
+            price: price,
+            image: image,
+            quantity: quantity
+         };
+
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+         const existingItemIndex = cart.findIndex(cartItem => cartItem.id === id);
+         
+         if (existingItemIndex !== -1) {
+            // If item already exists in the cart, update its quantity
+            cart[existingItemIndex].quantity += quantity;
+         } else {
+            // Add new item to cart
+            cart.push(item);
+         }
+
+         localStorage.setItem('cart', JSON.stringify(cart)); // Save cart to localStorage
+         updateCartCount(); // Update cart count on the page
+      }
+
+      // Update the cart count in the header
+      function updateCartCount() {
+         const cart = JSON.parse(localStorage.getItem('cart')) || [];
+         const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+         document.getElementById('cart-count').innerText = cartCount;
+      }
+
+      // Session timeout management
+      function startSessionTimer() {
+         const sessionTimeout = 300000; // 3 minutes timeout
+         let lastActivity = localStorage.getItem("lastActivity") || Date.now();
+         let sessionTimeoutTimer;
+
+         if (Date.now() - lastActivity > sessionTimeout) {
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+         } else {
+            resetSessionTimer();
+         }
+
+         // Reset session timer on activity
+         function resetSessionTimer() {
+            clearTimeout(sessionTimeoutTimer);
+            localStorage.setItem("lastActivity", Date.now());
+            sessionTimeoutTimer = setTimeout(() => {
+               localStorage.removeItem("isLoggedIn");
+               window.location.href = "login.html";
+            }, sessionTimeout);
+         }
+
+         // Track activity
+         window.addEventListener('mousemove', resetSessionTimer);
+         window.addEventListener('keydown', resetSessionTimer);
+         window.addEventListener('click', resetSessionTimer);
+      }
+      document.getElementById('query').addEventListener('input', function() {
+    const searchQuery = this.value.toLowerCase(); // Convert input to lowercase
+    const items = document.querySelectorAll('.card'); // Get all product cards
+
+    // Loop through all items and check if their name includes the search query
+    items.forEach(item => {
+        const name = item.querySelector('.title span').innerText.toLowerCase(); // Get item name
+
+        // If the name includes the search query, display the item, otherwise hide it
+        if (name.includes(searchQuery)) {
+            item.style.display = 'block'; // Show item
+        } else {
+            item.style.display = 'none'; // Hide item
+        }
+    });
+});
+   </script>
+
+   <script src="js/vinay.js"></script>
+</body>
+</html>

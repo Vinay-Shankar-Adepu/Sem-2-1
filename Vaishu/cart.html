@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="styles_cart.css"> <!-- Link to external CSS -->
+</head>
+<body>
+    <header>
+        <div class="logo">College Canteen</div>
+        <nav>
+            <a href="homepage.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="specials.html">Specials</a>
+            <a href="order-history.html">Order History</a>
+            <a href="about-us.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="auth">
+            <button onclick="window.location.href='login.html'">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total">
+            <h3>Total: Rs. <span id="total-price">0</span></h3>
+        </div>
+        <button id="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        <button id="clear-cart-btn" onclick="clearCart()">Clear Cart</button> <!-- Clear Cart Button -->
+    </main>
+
+    <footer>
+        <p>&copy; 2024 College Canteen</p>
+    </footer>
+
+    <script>
+        // Function to display items in the cart
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
+            cartItemsContainer.innerHTML = ''; // Clear the container
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                totalPriceElement.innerText = '0';
+                return;
+            }
+
+            // Display each cart item
+            cart.forEach((item, index) => {
+                totalPrice += item.price * item.quantity;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>Price: Rs. ${item.price}</p>
+                            <div class="quantity-controls">
+                                <button onclick="updateQuantity(${index}, -1)">-</button>
+                                <span>Quantity: ${item.quantity}</span>
+                                <button onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                            <p>Total Price: Rs. ${item.price * item.quantity}</p>
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Update total price
+            totalPriceElement.innerText = totalPrice;
+        }
+
+        // Function to update quantity (increase or decrease)
+        function updateQuantity(index, delta) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart[index];
+
+            // Ensure the quantity stays within a valid range
+            if (item.quantity + delta > 0) {
+                item.quantity += delta;
+                localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
+                displayCart(); // Re-render the cart
+            }
+        }
+
+        // Function to remove an item from the cart
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove item at index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
+            displayCart(); // Re-render the cart
+        }
+
+        // Function to clear all items from the cart
+        function clearCart() {
+            if (confirm("Are you sure you want to clear the cart?")) {
+                localStorage.removeItem('cart'); // Remove all items from localStorage
+                displayCart(); // Re-render the cart to show empty
+            }
+        }
+
+        // Checkout function
+        function checkout() {
+            if (JSON.parse(localStorage.getItem('cart')).length === 0) {
+                alert('Your cart is empty!');
+            } else {
+                alert('Proceeding to checkout...');
+                // Here you would redirect to a checkout page or handle payment
+                window.location.href = 'checkout.html'; // Placeholder
+            }
+        }
+
+        // On page load, display cart items
+        window.onload = displayCart;
+    </script>
+</body>
+</html>

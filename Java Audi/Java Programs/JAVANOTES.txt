@@ -1,0 +1,26 @@
+SHADOWING:
+when the name of the instance variable is same as that of the constructor parameter then the shadow of the parameter falls on the instance variable as a result the instance variable remains unchanged(default value).
+-------------------------------------------------------------------------------------------------------------------------------
+CONSTRUCTOR:
+It is a piece of code that is called by JVM, not the user when declaring an object.
+There are 2 types of constructor-
+1.Implicit: when the objects are not declared by the user, the JVM gives a default constructor.
+2.Explicit: When a user declares the object and class then the constructor invoked is called an explicit constructor.
+A normal function will be given parameters by the user for invoking but the parameters will not be given for a constructor.
+-----------------------------------------------------------------------------------------------------------------------------
+STATIC AND INSTANCE VARIABLES:
+A static variable is variable that is declared in a class with static keyword which makes it open for access and editing for objects that have been declared as it wont be recreated when an object is declared or a constructor is used. It is a single copy that belongs to the class. Objects can access it through reference and can edit it but its value will be same for every other object. Static variables are created when class is loaded into JAVM. A static variable can be called by an object by calling it like a method for example "object_name.Static_variable_name". Or we can call it by "Class_name.Statc_variable_name". 
+
+An instance variable is a variable which gets created each time an object gets created hence its value will be different for different objects unlike a static variable.
+-----------------------------------------------------------------------------------------------------------------------------
+STATIC and INSTANCE methods:
+Static methods dont need an object to be created or used to call it. A static method cannot access an instance variable without object declaration as no instance variable can be accessed without object creation(since instance variable will be created). 
+
+Instance methods require object creation and need to be used for calling. An instance method can access both static and instance variables.
+-----------------------------------------------------------------------------------------------------------------------------
+Q.WHYS IS MAIN METHOD STATIC?
+Ans: Static methods can be invoked without object creation of class in which it is defined. Hence the JVM does not need to create an object of executable class just to invoke main method.
+-----------------------------------------------------------------------------------------------------------------------------
+Q.WHY DOES THE TOTAL MEMORY EXCEED CALCULATED AMOUNT FOR OBJECT CREATION?
+Ans: When an object of a certain class is created, not only will the total storage taken will be sum of data types memory but also the metadata of class(Such as no.of methods, etc).
+-----------------------------------------------------------------------------------------------------------------------------
